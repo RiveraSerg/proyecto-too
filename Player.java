@@ -18,22 +18,20 @@ public class Player extends Actor
     
     private int direction = DIRECTION_NONE;
     
-    private int jumpStrength = 15;
-    private int fallSpeed = 0;
+    private int vSpeed = 0;
+    private int acceleration = 1;
+    private int jumpStrength = -15;
     
     
-    
+
     public Player(){
-        
         setImage("placeholder.png");
     }
     
     public void act(){
         handleKeys();
-        move(); 
-        applyGravity();
-        checkCollisions();
-        
+        move();
+        checkFall();
     }
     
     public void handleKeys() {
@@ -45,8 +43,9 @@ public class Player extends Actor
             direction = DIRECTION_NONE;
         }
         
-        if(Greenfoot.isKeyDown("space") && onGround()){
-            jump();
+        if(Greenfoot.isKeyDown("space") && (onGround())){
+            vSpeed = jumpStrength;
+            fall();
         }
     }
     
@@ -61,36 +60,19 @@ public class Player extends Actor
         }
     }
     
-    public void applyGravity() {
-        if(!onGround()) {
-            fallSpeed++;
-            setLocation(getX(), getY() + fallSpeed);
-        } else {
-            fallSpeed = 0;
-        }
-    
+    private void fall() {
+        setLocation(getX(), getY() + vSpeed);
+        vSpeed = vSpeed + acceleration; 
     }
     
-    public void jump() {
-        fallSpeed = -jumpStrength;
+    public boolean onGround(){
+       Actor under = getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class);
+       return under != null;
     }
     
-    public boolean onGround() {
-        int x = getX();
-        int y = getY();
-        int height = getImage().getHeight();
-        
-        Actor ground = getOneObjectAtOffset(0, height/2 , Ground.class);
-        return (ground != null);
-    }
-    
-    public void checkCollisions() {
-        if(isTouching(PlatformEnd.class)) {
+    public void checkFall(){
+        if(onGround() == false){
             fall();
         }
-    }
-    
-    public void fall() {
-        Greenfoot.stop();
     }
 }
