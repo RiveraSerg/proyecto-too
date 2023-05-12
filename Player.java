@@ -80,12 +80,7 @@ public class Player extends Actor
         int y = getY();
         int height = getImage().getHeight();
         
-        // Agregamos un valor fijo a la posición y del jugador para buscar en una posición por debajo de él
-        int yBelow = y + 32;
-        
-        // Buscamos un objeto Ground en la posición (x, yBelow)
-        Actor ground = getOneObjectAtOffset(0, height/2, Ground.class);
-        
+        Actor ground = getOneObjectAtOffset(0, height/2 , Ground.class);
         return (ground != null);
     }
     
