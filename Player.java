@@ -18,7 +18,7 @@ public class Player extends Actor
     
     private int direction = DIRECTION_NONE;
     
-    private int vSpeed = 0;
+    private int verticalSpeed = 0;
     private int acceleration = 1;
     private int jumpStrength = -15;
     
@@ -44,7 +44,7 @@ public class Player extends Actor
         }
         
         if(Greenfoot.isKeyDown("space") && (onGround())){
-            vSpeed = jumpStrength;
+            verticalSpeed = jumpStrength;
             fall();
         }
     }
@@ -61,8 +61,8 @@ public class Player extends Actor
     }
     
     private void fall() {
-        setLocation(getX(), getY() + vSpeed);
-        vSpeed = vSpeed + acceleration; 
+        setLocation(getX(), getY() + verticalSpeed);
+        verticalSpeed = verticalSpeed + acceleration; 
     }
     
     public boolean onGround(){
