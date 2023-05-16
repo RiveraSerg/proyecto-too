@@ -1,27 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Controls here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Control extends Button
 {
     public Control(){
-        GreenfootImage controlButton = new GreenfootImage(250, 60);
-        Font adjustFont = new Font(true,false,50);
-        
-        controlButton.setFont(adjustFont);
-        controlButton.setColor(Color.BLACK);
-        
-        controlButton.drawString("Controls",0,50);
-        setImage(controlButton);
+        super(250, 60, "Controls");
     }
     
-    public void act()
+    public void handleClick()
     {
-        checkMouseOverButton();
-        checkClick(new ControlScreen());
+        if(Greenfoot.mouseClicked(this)){
+            Greenfoot.setWorld(new ControlScreen());
+        }
     }
 }
