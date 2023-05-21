@@ -14,7 +14,7 @@ public class Ground extends Actor
      */
     
     public Ground() {
-        setImage("ground.png");
+        setImage("natureGround.jpg");
     }
     
     public void act()
