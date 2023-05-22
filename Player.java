@@ -5,10 +5,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
     private static final int OFFSET = 5;
     
@@ -22,6 +18,7 @@ public class Player extends Actor
     private int acceleration = 1;
     private int jumpStrength = -15;
     
+    private int leftlimit = 5;
     
 
     public Player(){
@@ -36,7 +33,12 @@ public class Player extends Actor
     
     public void handleKeys() {
         if(Greenfoot.isKeyDown("a")){
-            direction = DIRECTION_LEFT;
+            if(getX() > leftlimit){
+                direction = DIRECTION_LEFT;
+            }
+            else{
+                direction = DIRECTION_NONE;
+            }
         }else if(Greenfoot.isKeyDown("d")){
             direction = DIRECTION_RIGHT;
         }else{
@@ -48,6 +50,17 @@ public class Player extends Actor
             fall();
         }
     }
+    /*
+    public void checkRightLimit(){
+        int worldWidth = getWorld().getWidth();
+        if (getX() >= worldWidth) {
+            setLocation(50, 390);
+        }
+        //else if (getX() < 0) {
+         //   setLocation(worldWidth - 1, getY());
+        //}
+    }
+     */
     
     public void move() {
         switch(direction){
