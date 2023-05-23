@@ -1,7 +1,21 @@
 #BlueJ class context
 comment0.target=MyWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=MyWorld()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
-numComments=2
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ checkRightLimit()
+comment4.params=
+comment4.target=Player\ getPlayer()
+comment5.params=
+comment5.target=void\ generateNewSection()
+comment6.params=player
+comment6.target=void\ generateSection1(Player)
+comment7.params=player
+comment7.target=void\ generateSection2(Player)
+comment8.params=player
+comment8.target=void\ generateSection3(Player)
+comment9.params=x\ y
+comment9.target=void\ addGround(int,\ int)
+numComments=10

@@ -1,15 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Player here.
- */
 public class Player extends Actor
 {
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
     private static final int OFFSET = 5;
     
     private static final int DIRECTION_NONE = 0;
@@ -22,35 +14,61 @@ public class Player extends Actor
     private int acceleration = 1;
     private int jumpStrength = -15;
     
+    private int leftLimit = 5;
     
-
-    public Player(){
+    private boolean isJumping = false;
+    
+    private int lives;
+    
+    public Player()
+    {
         setImage("placeholder.png");
+        lives = 3;
     }
     
-    public void act(){
+    public void act()
+    {
         handleKeys();
         move();
         checkFall();
+        checkCollision();
+        checkEnemyCollision();
     }
     
-    public void handleKeys() {
-        if(Greenfoot.isKeyDown("a")){
-            direction = DIRECTION_LEFT;
-        }else if(Greenfoot.isKeyDown("d")){
+    public void handleKeys()
+    {
+        if(Greenfoot.isKeyDown("a"))
+        {
+            if(getX() > leftLimit)
+            {
+                direction = DIRECTION_LEFT;
+            }
+            else
+            {
+                direction = DIRECTION_NONE;
+            }
+        }
+        else if(Greenfoot.isKeyDown("d"))
+        {
             direction = DIRECTION_RIGHT;
-        }else{
+        }
+        else
+        {
             direction = DIRECTION_NONE;
         }
         
-        if(Greenfoot.isKeyDown("space") && (onGround())){
+        if(Greenfoot.isKeyDown("space") && onGround() && !isJumping)
+        {
             verticalSpeed = jumpStrength;
             fall();
+            isJumping = true;
         }
     }
     
-    public void move() {
-        switch(direction){
+    public void move()
+    {
+        switch(direction)
+        {
             case DIRECTION_RIGHT:
                 setLocation(getX() + OFFSET, getY());
                 break;
@@ -60,19 +78,86 @@ public class Player extends Actor
         }
     }
     
-    private void fall() {
+    private void fall()
+    {
         setLocation(getX(), getY() + verticalSpeed);
-        verticalSpeed = verticalSpeed + acceleration; 
+        verticalSpeed = verticalSpeed + acceleration;
     }
     
-    public boolean onGround(){
-       Actor under = getOneObjectAtOffset(0, getImage().getHeight()/2, Ground.class);
-       return under != null;
+    public boolean onGround()
+    {
+        Actor under = getOneObjectAtOffset(0, getImage().getHeight() / 2, Ground.class);
+        return under != null;
     }
     
-    public void checkFall(){
-        if(onGround() == false){
+    private void checkFall()
+    {
+        if(!onGround())
+        {
             fall();
         }
+        else
+        {
+            isJumping = false;
+        }
+    }
+    
+    private void checkCollision()
+    {
+        Actor groundBelow = getOneObjectAtOffset(0, getImage().getHeight() / 2, Ground.class);
+        if(groundBelow != null)
+        {
+            int newY = groundBelow.getY() - (groundBelow.getImage().getHeight() + getImage().getHeight()) / 2;
+            setLocation(getX(), newY);
+            verticalSpeed = 0;
+            isJumping = false;
+        }
+        
+        Actor groundAbove = getOneObjectAtOffset(0, -(getImage().getHeight() / 2), Ground.class);
+        if(groundAbove != null)
+        {
+            int newY = groundAbove.getY() + (groundAbove.getImage().getHeight() + getImage().getHeight()) / 2;
+            setLocation(getX(), newY);
+            verticalSpeed = 0;
+        }
+        
+        Actor groundLeft = getOneObjectAtOffset(-OFFSET, 0, Ground.class);
+        if(groundLeft != null)
+        {
+            int newX = groundLeft.getX() + (groundLeft.getImage().getWidth() + getImage().getWidth()) / 2;
+            setLocation(newX, getY());
+        }
+        
+        Actor groundRight = getOneObjectAtOffset(OFFSET, 0, Ground.class);
+        if(groundRight != null)
+        {
+            int newX = groundRight.getX() - (groundRight.getImage().getWidth() + getImage().getWidth()) / 2;
+            setLocation(newX, getY());
+        }
+    }
+    
+    private void checkEnemyCollision()
+    {
+        Actor enemy = getOneIntersectingObject(Enemy.class);
+        if(enemy != null)
+        {
+            if(lives > 0)
+            {
+                lives--;
+                if(lives == 0)
+                {
+                    Greenfoot.setWorld(new TitleScreen());
+                }
+                else
+                {
+                    Greenfoot.setWorld(new MyWorld());
+                }
+            }
+        }
+    }
+    
+    private int getLives()
+    {
+        return lives;
     }
 }
