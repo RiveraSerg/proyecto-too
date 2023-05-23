@@ -10,6 +10,7 @@ comment3.params=
 comment3.target=void\ handleKeys()
 comment4.params=
 comment4.target=void\ move()
+comment4.text=\r\n\ \ \ \ public\ void\ checkRightLimit(){\r\n\ \ \ \ \ \ \ \ int\ worldWidth\ \=\ getWorld().getWidth();\r\n\ \ \ \ \ \ \ \ if\ (getX()\ >\=\ worldWidth)\ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ setLocation(50,\ 390);\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ //else\ if\ (getX()\ <\ 0)\ {\r\n\ \ \ \ \ \ \ \ \ //\ \ \ setLocation(worldWidth\ -\ 1,\ getY());\r\n\ \ \ \ \ \ \ \ //}\r\n\ \ \ \ }\r\n
 comment5.params=
 comment5.target=void\ fall()
 comment6.params=

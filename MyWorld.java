@@ -90,7 +90,7 @@ public class MyWorld extends World
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
     }
-    
+
     private void generateSection2(Player player) {
         addGround(128, 455);
         addGround(384, 455);
@@ -101,7 +101,6 @@ public class MyWorld extends World
         FirstEnemy enemy = new FirstEnemy();
         addObject(enemy, ground2.getX(), ground2.getY() - ground2.getImage().getHeight() / 2 - enemy.getImage().getHeight() / 2);
 
-        
         Ground ground3 = new Ground();
         addObject(ground3, 168, 355);
         FirstEnemy enemy1 = new FirstEnemy();
@@ -110,7 +109,7 @@ public class MyWorld extends World
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
     }
-    
+
     private void generateSection3(Player player) {
         addGround(128, 455);
         addGround(384, 455);
@@ -124,7 +123,6 @@ public class MyWorld extends World
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
     }
-
 
 
     private void addGround(int x, int y) {

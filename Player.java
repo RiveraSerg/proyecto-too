@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Player extends Actor
 {
+
     private static final int OFFSET = 5;
     
     private static final int DIRECTION_NONE = 0;
@@ -13,8 +14,8 @@ public class Player extends Actor
     private int verticalSpeed = 0;
     private int acceleration = 1;
     private int jumpStrength = -15;
-    
     private int leftLimit = 5;
+
     
     private boolean isJumping = false;
     
@@ -35,21 +36,16 @@ public class Player extends Actor
         checkEnemyCollision();
     }
     
-    public void handleKeys()
-    {
-        if(Greenfoot.isKeyDown("a"))
-        {
-            if(getX() > leftLimit)
-            {
+
+    public void handleKeys() {
+        if(Greenfoot.isKeyDown("a")){
+            if(getX() > leftLimit){
                 direction = DIRECTION_LEFT;
             }
-            else
-            {
+            else{
                 direction = DIRECTION_NONE;
             }
-        }
-        else if(Greenfoot.isKeyDown("d"))
-        {
+        }else if(Greenfoot.isKeyDown("d")){
             direction = DIRECTION_RIGHT;
         }
         else
@@ -64,6 +60,17 @@ public class Player extends Actor
             isJumping = true;
         }
     }
+    /*
+    public void checkRightLimit(){
+        int worldWidth = getWorld().getWidth();
+        if (getX() >= worldWidth) {
+            setLocation(50, 390);
+        }
+        //else if (getX() < 0) {
+         //   setLocation(worldWidth - 1, getY());
+        //}
+    }
+     */
     
     public void move()
     {
