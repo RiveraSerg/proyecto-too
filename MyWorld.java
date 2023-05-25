@@ -4,16 +4,18 @@ import java.util.List;
 public class MyWorld extends World
 {  
     private boolean nextPart = false;
-    private HUD hud;
+    private ScoreBoard score;
+    private LivesCounter lives;
     private int sectionCount;
 
     public MyWorld()
     {    
         super(840, 480, 1, false);
-        hud = new HUD(); 
+        ScoreBoard score = new ScoreBoard();
+        LivesCounter lives = new LivesCounter(3);
         sectionCount = 1;
-
-        addObject(hud, 100, 50);
+        addObject(score, 780, 50);
+        addObject(lives, 50, 50);
 
         GreenfootImage background = new GreenfootImage("gameStartBackground_1.jpg"); // Ruta de la imagen de fondo
         background.scale(getWidth(), getHeight());
@@ -26,12 +28,14 @@ public class MyWorld extends World
         addGround(640, 455);
         addGround(896, 455);
     }
+    
+
 
     public void act(){
         checkRightLimit();
     }
 
-    public void checkRightLimit() {
+    private void checkRightLimit() {
         if (!nextPart) {
             Player player = getPlayer();
 

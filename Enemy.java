@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 
-public class Enemy extends Actor
+public abstract class Enemy extends Actor
 {
     private int direction = -2;
     

@@ -15,7 +15,12 @@ public class ControlScreen extends World
      */
     public ControlScreen()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(840, 480, 1, false); 
+        GreenfootImage background = new GreenfootImage("Control.png"); // Ruta de la imagen de fondo
+        background.scale(getWidth(), getHeight());
+        setBackground(background);
+        
+        BackButton Button = new BackButton();
+        addObject(Button, 805, 440);
     }
 }

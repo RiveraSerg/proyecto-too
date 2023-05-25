@@ -23,7 +23,7 @@ public abstract class Button extends Actor
         handleClick();
     }
     
-    public void checkMouseOverButton(){
+    private void checkMouseOverButton(){
         int transitionValue = 255;
         if(Greenfoot.mouseMoved(null)){
             mouseOverButton = Greenfoot.mouseMoved(this);
@@ -36,7 +36,7 @@ public abstract class Button extends Actor
         }
     }
     
-    public void transitionAdjustment(int adjustment){
+    private void transitionAdjustment(int adjustment){
         GreenfootImage temporalImage = getImage();
         temporalImage.setTransparency(adjustment);
         setImage(temporalImage);

@@ -4,29 +4,25 @@ public class Player extends Actor
 {
 
     private static final int OFFSET = 5;
-    
+
     private static final int DIRECTION_NONE = 0;
     private static final int DIRECTION_RIGHT = 1;
     private static final int DIRECTION_LEFT = 2;
-    
+
     private int direction = DIRECTION_NONE;
-    
+
     private int verticalSpeed = 0;
     private int acceleration = 1;
     private int jumpStrength = -15;
     private int leftLimit = 5;
 
-    
     private boolean isJumping = false;
-    
-    private int lives;
     
     public Player()
     {
-        setImage("placeholder.png");
-        lives = 3;
+        setImage("frog.png");
     }
-    
+
     public void act()
     {
         handleKeys();
@@ -35,9 +31,8 @@ public class Player extends Actor
         checkCollision();
         checkEnemyCollision();
     }
-    
 
-    public void handleKeys() {
+    private void handleKeys() {
         if(Greenfoot.isKeyDown("a")){
             if(getX() > leftLimit){
                 direction = DIRECTION_LEFT;
@@ -52,7 +47,7 @@ public class Player extends Actor
         {
             direction = DIRECTION_NONE;
         }
-        
+
         if(Greenfoot.isKeyDown("space") && onGround() && !isJumping)
         {
             verticalSpeed = jumpStrength;
@@ -60,19 +55,20 @@ public class Player extends Actor
             isJumping = true;
         }
     }
+
     /*
     public void checkRightLimit(){
-        int worldWidth = getWorld().getWidth();
-        if (getX() >= worldWidth) {
-            setLocation(50, 390);
-        }
-        //else if (getX() < 0) {
-         //   setLocation(worldWidth - 1, getY());
-        //}
+    int worldWidth = getWorld().getWidth();
+    if (getX() >= worldWidth) {
+    setLocation(50, 390);
+    }
+    //else if (getX() < 0) {
+    //   setLocation(worldWidth - 1, getY());
+    //}
     }
      */
-    
-    public void move()
+
+    private void move()
     {
         switch(direction)
         {
@@ -84,19 +80,19 @@ public class Player extends Actor
                 break;
         }
     }
-    
+
     private void fall()
     {
         setLocation(getX(), getY() + verticalSpeed);
         verticalSpeed = verticalSpeed + acceleration;
     }
-    
-    public boolean onGround()
+
+    private boolean onGround()
     {
         Actor under = getOneObjectAtOffset(0, getImage().getHeight() / 2, Ground.class);
         return under != null;
     }
-    
+
     private void checkFall()
     {
         if(!onGround())
@@ -108,7 +104,7 @@ public class Player extends Actor
             isJumping = false;
         }
     }
-    
+
     private void checkCollision()
     {
         Actor groundBelow = getOneObjectAtOffset(0, getImage().getHeight() / 2, Ground.class);
@@ -119,7 +115,7 @@ public class Player extends Actor
             verticalSpeed = 0;
             isJumping = false;
         }
-        
+
         Actor groundAbove = getOneObjectAtOffset(0, -(getImage().getHeight() / 2), Ground.class);
         if(groundAbove != null)
         {
@@ -127,14 +123,14 @@ public class Player extends Actor
             setLocation(getX(), newY);
             verticalSpeed = 0;
         }
-        
+
         Actor groundLeft = getOneObjectAtOffset(-OFFSET, 0, Ground.class);
         if(groundLeft != null)
         {
             int newX = groundLeft.getX() + (groundLeft.getImage().getWidth() + getImage().getWidth()) / 2;
             setLocation(newX, getY());
         }
-        
+
         Actor groundRight = getOneObjectAtOffset(OFFSET, 0, Ground.class);
         if(groundRight != null)
         {
@@ -142,29 +138,13 @@ public class Player extends Actor
             setLocation(newX, getY());
         }
     }
-    
+
     private void checkEnemyCollision()
     {
         Actor enemy = getOneIntersectingObject(Enemy.class);
         if(enemy != null)
         {
-            if(lives > 0)
-            {
-                lives--;
-                if(lives == 0)
-                {
-                    Greenfoot.setWorld(new TitleScreen());
-                }
-                else
-                {
-                    Greenfoot.setWorld(new MyWorld());
-                }
-            }
+            Greenfoot.setWorld(new MyWorld());
         }
-    }
-    
-    private int getLives()
-    {
-        return lives;
     }
 }
