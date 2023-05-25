@@ -9,7 +9,6 @@ public class ScoreBoard extends Actor {
     }
 
     public void act() {
-        score++;
         setImage(new GreenfootImage("Score: " + score, 24, Color.WHITE, new Color(0, 0, 0, 0)));
     }
 

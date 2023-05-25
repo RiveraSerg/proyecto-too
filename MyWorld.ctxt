@@ -2,6 +2,8 @@
 comment0.target=MyWorld
 comment1.params=
 comment1.target=MyWorld()
+comment10.params=x\ y
+comment10.target=void\ addCoin(int,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -18,4 +20,4 @@ comment8.params=player
 comment8.target=void\ generateSection3(Player)
 comment9.params=x\ y
 comment9.target=void\ addGround(int,\ int)
-numComments=10
+numComments=11

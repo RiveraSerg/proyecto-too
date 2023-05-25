@@ -23,10 +23,13 @@ public class MyWorld extends World
 
         Player player = new Player();
         addObject(player, 70, 390);
-        addGround(128, 455);
-        addGround(384, 455);
-        addGround(640, 455);
-        addGround(896, 455);
+        addGround(128, 464);
+        addGround(384, 464);
+        addGround(640, 464);
+        addGround(896, 464);
+        addCoin(300,432);
+        addCoin(332,432);
+        addCoin(364,432);
     }
     
 
@@ -64,6 +67,11 @@ public class MyWorld extends World
         for (Enemy enemy : enemys) {
             removeObject(enemy);
         }
+        
+        List<Item> items = getObjects(Item.class);
+        for (Item item : items) {
+            removeObject(item);
+        }
 
         Player player = getPlayer();
         switch (sectionCount) {
@@ -82,24 +90,30 @@ public class MyWorld extends World
     }
 
     private void generateSection1(Player player) {
-        addGround(128, 455);
-        addGround(384, 455);
-        addGround(640, 455);
-        addGround(896, 455);
+        addGround(128, 464);
+        addGround(384, 464);
+        addGround(640, 464);
+        addGround(896, 464);
         Ground ground2 = new Ground();
         addObject(ground2, 568, 355);
         FirstEnemy enemy = new FirstEnemy();
         addObject(enemy, ground2.getX(), ground2.getY() - ground2.getImage().getHeight() / 2 - enemy.getImage().getHeight() / 2);
+        
+        addCoin(500,323);
+        addCoin(532,323);
+        addCoin(564,323);
+        addCoin(596,323);
+        addCoin(628,323);
 
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
     }
 
     private void generateSection2(Player player) {
-        addGround(128, 455);
-        addGround(384, 455);
-        addGround(640, 455);
-        addGround(896, 455);
+        addGround(128, 464);
+        addGround(384, 464);
+        addGround(640, 464);
+        addGround(896, 464);
         Ground ground2 = new Ground();
         addObject(ground2, 568, 355);
         FirstEnemy enemy = new FirstEnemy();
@@ -109,16 +123,22 @@ public class MyWorld extends World
         addObject(ground3, 168, 355);
         FirstEnemy enemy1 = new FirstEnemy();
         addObject(enemy1, ground3.getX(), ground3.getY() - ground3.getImage().getHeight() / 2 - enemy1.getImage().getHeight() / 2);
+        
+        addCoin(300,423);
+        addCoin(332,423);
+        addCoin(364,423);
+        addCoin(396,423);
+        addCoin(428,423);
 
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
     }
 
     private void generateSection3(Player player) {
-        addGround(128, 455);
-        addGround(384, 455);
-        addGround(640, 455);
-        addGround(896, 455);
+        addGround(128, 464);
+        addGround(384, 464);
+        addGround(640, 464);
+        addGround(896, 464);
         Ground ground2 = new Ground();
         addObject(ground2, 568, 355);
         FirstEnemy enemy = new FirstEnemy();
@@ -128,9 +148,13 @@ public class MyWorld extends World
         int ground2Height = ground2.getImage().getHeight();
     }
 
-
     private void addGround(int x, int y) {
         Ground ground = new Ground();
         addObject(ground, x, y);
+    }
+    
+    private void addCoin(int x, int y) {
+        Coin coin = new Coin();
+        addObject(coin, x, y);
     }
 }

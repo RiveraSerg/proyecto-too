@@ -17,7 +17,7 @@ public class Player extends Actor
     private int leftLimit = 5;
 
     private boolean isJumping = false;
-    
+
     public Player()
     {
         setImage("frog.png");
@@ -30,6 +30,7 @@ public class Player extends Actor
         checkFall();
         checkCollision();
         checkEnemyCollision();
+        checkItemCollision();
     }
 
     private void handleKeys() {
@@ -55,18 +56,6 @@ public class Player extends Actor
             isJumping = true;
         }
     }
-
-    /*
-    public void checkRightLimit(){
-    int worldWidth = getWorld().getWidth();
-    if (getX() >= worldWidth) {
-    setLocation(50, 390);
-    }
-    //else if (getX() < 0) {
-    //   setLocation(worldWidth - 1, getY());
-    //}
-    }
-     */
 
     private void move()
     {
@@ -147,4 +136,21 @@ public class Player extends Actor
             Greenfoot.setWorld(new MyWorld());
         }
     }
+
+    private void checkItemCollision() {
+        Item item = (Item) getOneIntersectingObject(Item.class);
+        if (item != null) {
+            getWorld().removeObject(item);
+            
+            ScoreBoard scoreboard = (ScoreBoard) getWorld().getObjects(ScoreBoard.class).get(0);
+            scoreboard.addToScore(item.getPoints());
+            
+            GreenfootSound sound = item.getSound();
+            
+            if (sound != null) {
+                sound.play();
+            }
+        }
+    }
+
 }
