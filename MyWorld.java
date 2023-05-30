@@ -104,6 +104,7 @@ public class MyWorld extends World
         addCoin(564,323);
         addCoin(596,323);
         addCoin(628,323);
+        addEpicCoin(564, 200);
 
         int playerHeight = player.getImage().getHeight();
         int ground2Height = ground2.getImage().getHeight();
@@ -156,5 +157,10 @@ public class MyWorld extends World
     private void addCoin(int x, int y) {
         Coin coin = new Coin();
         addObject(coin, x, y);
+    }
+    
+    private void addEpicCoin(int x, int y){
+        EpicCoin epicCoin = new EpicCoin();
+        addObject(epicCoin, x, y);
     }
 }
