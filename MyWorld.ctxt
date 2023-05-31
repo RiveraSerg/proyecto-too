@@ -16,4 +16,6 @@ comment7.params=x\ y
 comment7.target=void\ addCoin(int,\ int)
 comment8.params=x\ y\ speed\ moveArea
 comment8.target=void\ addPlatformMove(int,\ int,\ int,\ int)
-numComments=9
+comment9.params=x\ y
+comment9.target=void\ addEpicCoin(int,\ int)
+numComments=10

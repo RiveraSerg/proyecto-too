@@ -13,14 +13,14 @@ public class FirstLevel extends World
     private int sectionCount;
     
     private ScoreBoard score;
-    private LivesCounter lives;
+    private LifeCounter lives;
     
     public FirstLevel()
     {    
         super(840, 480, 1, false);
         
         ScoreBoard score = new ScoreBoard();
-        LivesCounter lives = new LivesCounter(3);
+        LifeCounter life = new LifeCounter(3);
         
         sectionCount = 1;
         

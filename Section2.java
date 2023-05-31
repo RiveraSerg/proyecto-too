@@ -27,6 +27,6 @@ public class Section2 extends MyWorld
         world.addCoin(332,423);
         world.addCoin(364,423);
         world.addCoin(396,423);
-        world.addCoin(428,423);
+        world.addEpicCoin(428,423);
     }
 }

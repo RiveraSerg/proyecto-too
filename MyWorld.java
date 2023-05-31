@@ -5,14 +5,14 @@ public class MyWorld extends World
 {  
     private boolean nextPart = false;
     private ScoreBoard score;
-    private LivesCounter lives;
+    private LifeCounter lives;
     private int sectionCount;
 
     public MyWorld()
     {    
         super(840, 480, 1, false);
         ScoreBoard score = new ScoreBoard();
-        LivesCounter lives = new LivesCounter(3);
+        LifeCounter lives = new LifeCounter(3);
         sectionCount = 1;
         addObject(score, 780, 50);
         addObject(lives, 50, 50);
@@ -103,5 +103,10 @@ public class MyWorld extends World
     public void addPlatformMove(int x, int y, int speed, int moveArea) {
         MovingPlatform platform =new MovingPlatform(speed, moveArea); //speed recomendado 2-3, moveArea recomendado 474
         addObject(platform, x, y);
+    }
+    
+    public void addEpicCoin(int x, int y){
+        EpicCoin epicCoin = new EpicCoin();
+        addObject(epicCoin, x, y);
     }
 }
