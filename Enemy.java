@@ -10,13 +10,13 @@ public abstract class Enemy extends Actor
         checkCollision();
     }
     
-    private void checkCollision() {
+    public void checkCollision() {
         if (isTouching(Ground.class) || !isOnPlatform()) {
             direction *= -1;
         }
     }
     
-    private boolean isOnPlatform() {
+    public boolean isOnPlatform() {
         int y = getY();
         Actor platform = getOneObjectAtOffset(0, getImage().getHeight() / 2, Ground.class);
         return platform != null && y <= platform.getY();

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=FirstLevel
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ FirstLevel\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=FirstLevel()
+comment2.params=x\ y
+comment2.target=void\ addGround(int,\ int)
+comment3.params=x\ y
+comment3.target=void\ addCoin(int,\ int)
+comment4.params=x\ y\ speed\ moveArea
+comment4.target=void\ addPlatformMove(int,\ int,\ int,\ int)
+numComments=5

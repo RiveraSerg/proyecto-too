@@ -27,7 +27,7 @@ public class LivesCounter extends Actor {
     }
 
     private void updateImage() {
-        GreenfootImage image = new GreenfootImage("Lives: " + lives, 24, Color.WHITE, new Color(0, 0, 0, 0));
+        GreenfootImage image = new GreenfootImage(": " + lives, 24, Color.WHITE, new Color(0, 0, 0, 0));
         setImage(image);
     }
 }

@@ -20,7 +20,9 @@ public abstract class Button extends Actor
     public void act()
     {
         checkMouseOverButton();
-        handleClick();
+        if(Greenfoot.mouseClicked(this)){
+            handleClick();
+        }
     }
     
     private void checkMouseOverButton(){
@@ -44,11 +46,3 @@ public abstract class Button extends Actor
     
     public abstract void handleClick();
 }
-/*   
-    public void checkClick(World world){
-        if(Greenfoot.mouseClicked(this)){
-            Greenfoot.setWorld(world);
-        }
-    }
-}
- */

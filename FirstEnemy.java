@@ -6,8 +6,4 @@ public class FirstEnemy extends Enemy
         setImage("enemy.png");
     }
     
-    public void act()
-    {
-        super.act();
-    }
 }

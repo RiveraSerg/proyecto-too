@@ -9,8 +9,8 @@ public class BackButton extends Button
     
     public void handleClick()
     {
-        if(Greenfoot.mouseClicked(this)){
+        
             Greenfoot.setWorld(new TitleScreen());
-        }
+    
     }
 }

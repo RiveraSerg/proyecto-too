@@ -8,8 +8,8 @@ public class Control extends Button
     
     public void handleClick()
     {
-        if(Greenfoot.mouseClicked(this)){
+        
             Greenfoot.setWorld(new ControlScreen());
-        }
+        
     }
 }

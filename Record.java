@@ -8,8 +8,8 @@ public class Record extends Button
     
     public void handleClick()
     {
-        if(Greenfoot.mouseClicked(this)){
+        
             Greenfoot.setWorld(new RecordScreen());
-        }
+        
     }
 }

@@ -12,9 +12,7 @@ public class Play extends Button
     
     public void handleClick()
     {
-        if(Greenfoot.mouseClicked(this)){
             titleTheme.stop();
             Greenfoot.setWorld(new MyWorld());
-        }
     }
 }
