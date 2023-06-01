@@ -7,16 +7,23 @@ public class Player extends Actor
     private static final int DIRECTION_RIGHT = 1;
     private static final int DIRECTION_LEFT = 2;
     private static final int JUMP_STRENGTH = -15;
-    
+
     private int direction = DIRECTION_NONE;
     private int verticalSpeed = 0;
     private int acceleration = 1;
     private int leftLimit = 5;
     private boolean isJumping = false;
 
-    public Player()
+    private int levelCount = 1;
+
+    private int score;
+    private int lives;
+
+    public Player(int levelCount)
     {
         setImage("frog.png");
+        this.levelCount = levelCount;
+        this.lives = 3;
     }
 
     public void act()
@@ -27,6 +34,8 @@ public class Player extends Actor
         checkCollision();
         checkEnemyCollision();
         checkItemCollision();
+        checkOutOfBounds();
+        checkStarCollision();
     }
 
     private void handleKeys()
@@ -140,7 +149,38 @@ public class Player extends Actor
         Actor enemy = getOneIntersectingObject(Enemy.class);
         if (enemy != null)
         {
-            Greenfoot.setWorld(new MyWorld());
+            death();
+        }
+    }
+
+    private void checkOutOfBounds()
+    {
+        if (getY() > getWorld().getHeight()) {
+            death();
+        }
+    }
+
+    private void death() {
+        lives = GlobalVariables.getInstance().getLives();
+        lives--;
+        if (lives > 0) {
+            switch(levelCount) {
+                case 1:
+                    GlobalVariables.getInstance().setLives(lives);
+                    Greenfoot.setWorld(new FirstLevel());
+                    break;
+                case 2:
+                    GlobalVariables.getInstance().setLives(lives);
+                    Greenfoot.setWorld(new SecondLevel());
+                    break;
+                case 3:
+                    break;
+            }
+        } else {
+            // Restablecer las vidas y puntuación en GlobalVariables
+            GlobalVariables.getInstance().setLives(3);
+            GlobalVariables.getInstance().setScore(0);
+            Greenfoot.setWorld(new TitleScreen());
         }
     }
 
@@ -150,6 +190,8 @@ public class Player extends Actor
         if (item != null)
         {
             getWorld().removeObject(item);
+
+            score += item.getPoints();
 
             ScoreBoard scoreboard = (ScoreBoard) getWorld().getObjects(ScoreBoard.class).get(0);
             scoreboard.addToScore(item.getPoints());
@@ -162,6 +204,29 @@ public class Player extends Actor
             }
         }
     }
-    
-    
+
+    private void checkStarCollision() {
+        EndLevel star = (EndLevel) getOneIntersectingObject(EndLevel.class);
+        if (star != null)
+        {
+            getWorld().removeObject(star);
+
+            levelCount++;
+
+            switch(levelCount) {
+                case 1:
+                    GlobalVariables.getInstance().setScore(score);
+                    Greenfoot.setWorld(new FirstLevel());
+                    break;
+                case 2:
+                    GlobalVariables.getInstance().setScore(score);
+                    Greenfoot.setWorld(new SecondLevel());
+                    break;
+                case 3:
+                    break;
+            }
+
+        }
+    }
+
 }

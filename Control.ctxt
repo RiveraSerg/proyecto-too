@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Control
-comment1.params=
-comment1.target=Control()
+comment1.params=music
+comment1.target=Control(greenfoot.GreenfootSound)
 comment2.params=
 comment2.target=void\ handleClick()
 numComments=3

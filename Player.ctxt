@@ -1,11 +1,17 @@
 #BlueJ class context
 comment0.target=Player
-comment1.params=
-comment1.target=Player()
+comment1.params=levelCount
+comment1.target=Player(int)
 comment10.params=
 comment10.target=void\ checkEnemyCollision()
 comment11.params=
-comment11.target=void\ checkItemCollision()
+comment11.target=void\ checkOutOfBounds()
+comment12.params=
+comment12.target=void\ death()
+comment13.params=
+comment13.target=void\ checkItemCollision()
+comment14.params=
+comment14.target=void\ checkStarCollision()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -22,4 +28,4 @@ comment8.params=
 comment8.target=void\ checkFall()
 comment9.params=
 comment9.target=void\ checkCollision()
-numComments=12
+numComments=15

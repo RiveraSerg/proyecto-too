@@ -1,15 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
-public class FirstLevel extends AllWorlds
+public class SecondLevel extends AllWorlds
 {
     private boolean nextPart = false;
     private ScoreBoard score;
     private LifeCounter lives;
     private int sectionCount;
 
-
-    public FirstLevel()
+    public SecondLevel()
     {    
         ScoreBoard score = new ScoreBoard();
         LifeCounter lives = new LifeCounter(3);
@@ -17,6 +16,8 @@ public class FirstLevel extends AllWorlds
         addObject(score, 780, 50);
         addObject(lives, 50, 50);
         
+        int storedScore = GlobalVariables.getInstance().getScore();
+        score.setScore(storedScore);
         int storedLife = GlobalVariables.getInstance().getLives();
         lives.setLife(storedLife);
 
@@ -24,7 +25,7 @@ public class FirstLevel extends AllWorlds
         background.scale(getWidth(), getHeight());
         setBackground(background);
 
-        Player player = new Player(1);
+        Player player = new Player(2);
         addObject(player, 70, 390);
         addGround(128, 464);
         addGround(384, 464);
@@ -68,7 +69,7 @@ public class FirstLevel extends AllWorlds
         for (Item item : items) {
             removeObject(item);
         }
-        
+    
         Player player = getPlayer();
         switch (sectionCount) {
             case 1:

@@ -13,6 +13,6 @@ public class Play extends Button
     public void handleClick()
     {
             titleTheme.stop();
-            Greenfoot.setWorld(new MyWorld());
+            Greenfoot.setWorld(new FirstLevel());
     }
 }

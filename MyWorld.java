@@ -21,7 +21,7 @@ public class MyWorld extends World
         background.scale(getWidth(), getHeight());
         setBackground(background);
 
-        Player player = new Player();
+        Player player = new Player(2);
         addObject(player, 70, 390);
         addGround(128, 464);
         addGround(384, 464);

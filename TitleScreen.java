@@ -10,7 +10,7 @@ public class TitleScreen extends World
         super(840, 480, 1, false);
         Play playButton = new Play(titleTheme);
         addObject(playButton, 420, 210);
-        Control controlButton = new Control();
+        Control controlButton = new Control(titleTheme);
         addObject(controlButton, 220, 410);
         Record recordButton = new Record();
         addObject(recordButton, 620, 410);

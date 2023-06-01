@@ -19,5 +19,9 @@ public class ScoreBoard extends Actor {
     public int getScore() {
         return score;
     }
+    
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
 
