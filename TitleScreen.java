@@ -8,13 +8,14 @@ public class TitleScreen extends World
     public TitleScreen()
     {    
         super(840, 480, 1, false);
-        Play playButton = new Play(titleTheme);
+        Play playButton = new Play(titleTheme, "Play", 100, 60);
         addObject(playButton, 420, 210);
         Control controlButton = new Control(titleTheme);
         addObject(controlButton, 220, 410);
         Record recordButton = new Record();
         addObject(recordButton, 620, 410);
         prepare();
+        
     }
 
     private void prepare(){
@@ -33,6 +34,7 @@ public class TitleScreen extends World
 
         image.scale(newWidth, newHeight);
         addObject(logoPicture, getWidth()/2, 100);
+        
     }
 
     public void started(){

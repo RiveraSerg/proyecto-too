@@ -9,10 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ControlScreen extends World
 {
 
-    /**
-     * Constructor for objects of class ControlScreen.
-     * 
-     */
+    private GreenfootSound titleTheme = new GreenfootSound("titleTheme.wav");
+    
     public ControlScreen()
     {    
         super(840, 480, 1, false); 
@@ -20,7 +18,7 @@ public class ControlScreen extends World
         background.scale(getWidth(), getHeight());
         setBackground(background);
         
-        BackButton Button = new BackButton();
+        BackButton Button = new BackButton(titleTheme ,"Back");
         addObject(Button, 805, 440);
     }
 }

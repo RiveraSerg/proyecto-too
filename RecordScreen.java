@@ -11,6 +11,8 @@ public class RecordScreen extends World
 {
     private List<Player> players;
     private List<RecordDataContainer> records;
+    
+    private GreenfootSound titleTheme = new GreenfootSound("titleTheme.wav");
 
     public RecordScreen()
     {    
@@ -19,7 +21,7 @@ public class RecordScreen extends World
         background.scale(getWidth(), getHeight());
         setBackground(background);
 
-        BackButton Button = new BackButton();
+        BackButton Button = new BackButton(titleTheme,"Back");
         addObject(Button, 805, 440);
 
         records = readRecordsFromFile();

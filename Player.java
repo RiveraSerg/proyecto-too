@@ -180,7 +180,7 @@ public class Player extends Actor
             // Restablecer las vidas y puntuación en GlobalVariables
             GlobalVariables.getInstance().setLives(3);
             GlobalVariables.getInstance().setScore(0);
-            Greenfoot.setWorld(new TitleScreen());
+            Greenfoot.setWorld(new GameOverScreen());
         }
     }
 

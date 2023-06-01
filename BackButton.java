@@ -1,16 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 public class BackButton extends Button
 {
-    public BackButton(){
-        super(200, 60, "Back");
+
+    private GreenfootSound titleTheme;
+
+    public BackButton(GreenfootSound music, String name){
+        super(200, 60, name);
+        titleTheme = music;
     }
-    
+
     public void handleClick()
     {
-        
-            Greenfoot.setWorld(new TitleScreen());
-    
+        titleTheme.stop();
+        TitleScreen titleScreen = new TitleScreen();
+        Greenfoot.setWorld(titleScreen);
+        titleScreen.started();
     }
 }

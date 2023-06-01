@@ -5,8 +5,8 @@ public class Play extends Button
     
     private GreenfootSound titleTheme;
     
-    public Play(GreenfootSound music){
-        super(100, 60, "Play");
+    public Play(GreenfootSound music, String name, int x, int y){
+        super(x, y, name);
         titleTheme = music;
     }
     
