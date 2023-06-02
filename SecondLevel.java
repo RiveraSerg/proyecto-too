@@ -25,7 +25,7 @@ public class SecondLevel extends AllWorlds
         background.scale(getWidth(), getHeight());
         setBackground(background);
 
-        Player player = new Player(2);
+        Player player = new Player(2, GlobalVariables.getInstance().getScore());
         addObject(player, 70, 390);
         addGround(128, 464);
         addGround(384, 464);

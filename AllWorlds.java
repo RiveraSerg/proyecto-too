@@ -77,4 +77,9 @@ public class AllWorlds extends World
         EndLevel star = new EndLevel();
         addObject(star, x, y);
     }
+    
+    public void addHorizontalEnemy(int x, int y, int speed) {
+        HorizontalEnemy enemy = new HorizontalEnemy(speed);
+        addObject(enemy, x, y);
+    }
 }

@@ -1,57 +1,55 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
-public class FirstLevel extends AllWorlds
+public class ThirdLevel extends AllWorlds
 {
     private boolean nextPart = false;
     private ScoreBoard score;
     private LifeCounter lives;
     private int sectionCount;
 
-    public FirstLevel()
+    public ThirdLevel()
     {    
         ScoreBoard score = new ScoreBoard();
         LifeCounter lives = new LifeCounter(3);
         sectionCount = 1;
-        addObject(score, 780, 50);
+        addObject(score, 760, 50);
         addObject(lives, 50, 50);
         
-        int storedScore = GlobalVariables.getInstance().getScore();
-        score.setScore(storedScore);
-        int storedLife = GlobalVariables.getInstance().getLives();
-        lives.setLife(storedLife);
+        score.setScore(GlobalVariables.getInstance().getScore());
+        lives.setLife(GlobalVariables.getInstance().getLives());
 
         GreenfootImage background = new GreenfootImage("gameStartBackground_1.jpg"); // Ruta de la imagen de fondo
         background.scale(getWidth(), getHeight());
         setBackground(background);
 
-        Player player = new Player(1,0);
+        Player player = new Player(3, GlobalVariables.getInstance().getScore());
         addObject(player, 70, 390);
         addGround(128, 464);
         addGround(384, 464);
-        
-        Ground ground1 = new Ground();
-        addObject(ground1, 640, 464);
-        
-        FirstEnemy enemy = new FirstEnemy();
-        addObject(enemy, ground1.getX(), ground1.getY() - ground1.getImage().getHeight() / 2 - enemy.getImage().getHeight() / 2);
-        
+        addGround(640, 464);
         addGround(896, 464);
         
-        addCoin(332,432);
-        addCoin(364,432);
-        addCoin(398,432);
+        addWall(800,264);
+        addWall(800,464);
         
+        addBrick(164, 364);
+        
+        addBrick(364, 264);
+        
+        addBrick(564, 164);
+        
+        addHorizontalEnemy(890, 432, 4);
+        addHorizontalEnemy(1090, 326, 4);
+        addHorizontalEnemy(1290, 226, 4);
+        addHorizontalEnemy(1490, 126, 4);
+        
+        addCoin(536,432);
+        addCoin(568,432);
+        addCoin(600,432);
         addCoin(632,432);
         addCoin(664,432);
         addCoin(698,432);
-        
-        addBrick(364,364);
-        
-        addBrick(564,286);
-        addEpicCoin(564, 230);
-        
-        addWall(786, 364);
     }
     
     public void generateNewSection(){
@@ -69,19 +67,19 @@ public class FirstLevel extends AllWorlds
         for (Item item : items) {
             removeObject(item);
         }
-        
+    
         Player player = getPlayer();
         switch (sectionCount) {
             case 1:
-                FirstLevelFirstSection section1 = new FirstLevelFirstSection(this);
-                section1.generateSection();
+                ThirdLevelFirstSection sectionFirst = new ThirdLevelFirstSection(this);
+                sectionFirst.generateSection();
                 break;
             case 2:
-                FirstLevelSecondSection section2 = new FirstLevelSecondSection(this);
+                ThirdLevelSecondSection section2 = new ThirdLevelSecondSection(this);
                 section2.generateSection();
                 break;
             case 3:
-                FirstLevelThirdSection section3 = new FirstLevelThirdSection(this);
+                ThirdLevelThirdSection section3 = new ThirdLevelThirdSection(this);
                 section3.generateSection();
                 break;
         }

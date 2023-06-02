@@ -19,11 +19,12 @@ public class Player extends Actor
     private int score;
     private int lives;
 
-    public Player(int levelCount)
+    public Player(int levelCount, int score)
     {
         setImage("frog.png");
         this.levelCount = levelCount;
         this.lives = 3;
+        this.score = score;
     }
 
     public void act()
@@ -175,11 +176,10 @@ public class Player extends Actor
                     break;
                 case 3:
                     GlobalVariables.getInstance().setLives(lives);
-                    Greenfoot.setWorld(new SecondLevel());
+                    Greenfoot.setWorld(new ThirdLevel());
                     break;
             }
         } else {
-            // Restablecer las vidas y puntuación en GlobalVariables
             GlobalVariables.getInstance().setLives(3);
             GlobalVariables.getInstance().setScore(0);
             Greenfoot.setWorld(new GameOverScreen());
@@ -226,7 +226,7 @@ public class Player extends Actor
                     break;
                 case 3:
                     GlobalVariables.getInstance().setScore(score);
-                    Greenfoot.setWorld(new SecondLevel());
+                    Greenfoot.setWorld(new ThirdLevel());
                     break;
             }
 

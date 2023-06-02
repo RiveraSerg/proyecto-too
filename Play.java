@@ -14,5 +14,7 @@ public class Play extends Button
     {
             titleTheme.stop();
             Greenfoot.setWorld(new FirstLevel());
+            GlobalVariables.getInstance().setLives(3);
+            GlobalVariables.getInstance().setScore(0);
     }
 }
