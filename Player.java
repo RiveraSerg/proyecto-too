@@ -174,6 +174,8 @@ public class Player extends Actor
                     Greenfoot.setWorld(new SecondLevel());
                     break;
                 case 3:
+                    GlobalVariables.getInstance().setLives(lives);
+                    Greenfoot.setWorld(new SecondLevel());
                     break;
             }
         } else {
@@ -223,6 +225,8 @@ public class Player extends Actor
                     Greenfoot.setWorld(new SecondLevel());
                     break;
                 case 3:
+                    GlobalVariables.getInstance().setScore(score);
+                    Greenfoot.setWorld(new SecondLevel());
                     break;
             }
 

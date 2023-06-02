@@ -1,11 +1,3 @@
 #BlueJ class context
 comment0.target=Enemy
-comment1.params=
-comment1.target=void\ act()
-comment2.params=
-comment2.target=void\ checkCollision()
-comment3.params=
-comment3.target=boolean\ isOnPlatform()
-comment4.params=
-comment4.target=void\ checkWorldBounds()
-numComments=5
+numComments=1

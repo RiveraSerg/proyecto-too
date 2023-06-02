@@ -42,16 +42,33 @@ public class SecondLevel extends AllWorlds
         addCoin(364,432);
         addCoin(398,432);
         
-        addCoin(632,432);
-        addCoin(664,432);
-        addCoin(698,432);
         
-        addBrick(364,364);
+        addBrick(784,364);
+        addWall(860,464);
+        addWall(860,264);
         
-        addBrick(564,286);
-        addEpicCoin(564, 230);
+        addGround(128, 300);
+        addGround(384, 300);
         
-        addWall(786, 364);
+        addCoin(332,268);
+        addCoin(364,268);
+        addCoin(398,268);
+        
+        addEpicCoin(100, 248);
+    
+        addGround(332, 120);
+        addGround(670, 120);
+        
+        Ground ground2 = new Ground();
+        addObject(ground2, 486, 300);
+        
+        
+        FirstEnemy enemy2 = new FirstEnemy();
+        addObject(enemy2, ground2.getX(), ground2.getY() - ground2.getImage().getHeight() / 2 - enemy2.getImage().getHeight() / 2);
+        
+        
+        addBrick(100,200);
+        
     }
     
     public void generateNewSection(){
@@ -73,15 +90,15 @@ public class SecondLevel extends AllWorlds
         Player player = getPlayer();
         switch (sectionCount) {
             case 1:
-                FirstLevelFirstSection section1 = new FirstLevelFirstSection(this);
+                SecondLevelFirstSection section1 = new SecondLevelFirstSection(this);
                 section1.generateSection();
                 break;
             case 2:
-                FirstLevelSecondSection section2 = new FirstLevelSecondSection(this);
+                SecondLevelSecondSection section2 = new SecondLevelSecondSection(this);
                 section2.generateSection();
                 break;
             case 3:
-                FirstLevelThirdSection section3 = new FirstLevelThirdSection(this);
+                SecondLevelThirdSection section3 = new SecondLevelThirdSection(this);
                 section3.generateSection();
                 break;
         }

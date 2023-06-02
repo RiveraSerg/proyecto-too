@@ -8,7 +8,7 @@ public class EpicCoin extends Item
     private int frameCooldownMax;
     
     public EpicCoin(){
-        super(200, "coinSound.wav");
+        super(350, "coinSound.wav");
         animationFrames = new GreenfootImage[6];
         for(int i=0; i<6; i++){
             animationFrames[i] = new GreenfootImage("coin_frame_" + i + ".png");
