@@ -16,6 +16,7 @@ public class TitleScreen extends World
         addObject(recordButton, 620, 410);
         prepare();
         
+        
     }
 
     private void prepare(){

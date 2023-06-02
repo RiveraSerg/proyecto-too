@@ -13,7 +13,7 @@ public class Record extends Button
     public void handleClick()
     {
             titleTheme.stop();
-            Greenfoot.setWorld(new RecordScreen());
+            Greenfoot.setWorld(new Records());
         
     }
 }

@@ -24,10 +24,9 @@ public class ThirdLevelSecondSection extends ThirdLevel
         
         world.addGround(800, 464);
         
-        world.addHorizontalEnemy(890, 432, 4);
+        world.addHorizontalEnemy(990, 432, 3);
         
-        VerticalEnemy verticalEnemy = new VerticalEnemy(400, 2); 
-        world.addObject(verticalEnemy, 275, 260);
+        
         
         VerticalEnemy verticalEnemy1 = new VerticalEnemy(400, 2); 
         world.addObject(verticalEnemy1, 680, 260);

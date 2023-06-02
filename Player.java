@@ -1,4 +1,7 @@
 import greenfoot.*;
+import javax.swing.JOptionPane;
+import java.io.FilterWriter;
+import java.io.*;
 
 public class Player extends Actor
 {
@@ -228,9 +231,33 @@ public class Player extends Actor
                     GlobalVariables.getInstance().setScore(score);
                     Greenfoot.setWorld(new ThirdLevel());
                     break;
+                case 4:
+                    String username = Greenfoot.ask("Por favor, introduce tu nombre de usuario:");
+                    RecordData record = new RecordData(username, score);
+                    saveRecord(record);
+                    Greenfoot.setWorld(new TitleScreen());
+                    break;
             }
 
         }
     }
+
+    
+    private void saveRecord(RecordData record) {
+    try {
+        // Abrir el archivo para escritura (si no existe, se creará)
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("records.txt", true));
+
+        // Escribir el registro en una nueva línea
+        bufferedWriter.write(record.getPlayerName() + "," + record.getScore());
+        bufferedWriter.newLine();
+
+        // Cerrar el archivo
+        bufferedWriter.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
 }
