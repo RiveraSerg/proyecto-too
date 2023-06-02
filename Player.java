@@ -183,6 +183,9 @@ public class Player extends Actor
                     break;
             }
         } else {
+            String username = Greenfoot.ask("Por favor, introduce tu nombre de usuario:");
+                    RecordData record = new RecordData(username, score);
+                    saveRecord(record);
             GlobalVariables.getInstance().setLives(3);
             GlobalVariables.getInstance().setScore(0);
             Greenfoot.setWorld(new GameOverScreen());

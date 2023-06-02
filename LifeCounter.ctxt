@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LifeCounter
-comment1.params=initialLives
+comment1.params=initialLifes
 comment1.target=LifeCounter(int)
 comment2.params=
 comment2.target=void\ act()

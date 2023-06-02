@@ -3,8 +3,8 @@ import greenfoot.*;
 public class LifeCounter extends Actor {
     private int life;
 
-    public LifeCounter(int initialLives) {
-        life = initialLives;
+    public LifeCounter(int initialLifes) {
+        life = initialLifes;
         updateImage();
     }
 

@@ -17,14 +17,15 @@ public class ThirdLevelSecondSection extends ThirdLevel
 
     public void generateSection() {
         world.addGround(128, 464);
+        world.addWallVariant(232, 532);
        
         
-        world.addPlatformMove(464, 400, 3, 500);
+        world.addPlatformMove(464, 400, 4, 500);
         
         
         world.addGround(800, 464);
         
-        world.addHorizontalEnemy(990, 432, 3);
+        world.addHorizontalEnemy(990, 432, 4);
         
         
         
