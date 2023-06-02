@@ -12,7 +12,7 @@ public class TitleScreen extends World
         addObject(playButton, 420, 210);
         Control controlButton = new Control(titleTheme);
         addObject(controlButton, 220, 410);
-        Record recordButton = new Record();
+        Record recordButton = new Record(titleTheme);
         addObject(recordButton, 620, 410);
         prepare();
         
